@@ -54,5 +54,5 @@ app.register(getEventAttendees);
 app.setErrorHandler(errorHandler);
 
 app.listen({ port: 3333, host: "0.0.0.0" }).then(() => {
-  console.log("API listening on port 3333");
+  console.log("API listening on port 3333 http://localhost:3333/docs");
 });

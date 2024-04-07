@@ -17,6 +17,7 @@ export async function getAttendeeBadge(app: FastifyInstance) {
         response: {
           200: z.object({
             badge: z.object({
+              id: z.string(),
               name: z.string(),
               email: z.string(),
               eventTitle: z.string(),
@@ -31,6 +32,7 @@ export async function getAttendeeBadge(app: FastifyInstance) {
 
       const attendee = await prisma.attendee.findUnique({
         select: {
+          id: true,
           name: true,
           email: true,
           event: {
@@ -54,6 +56,7 @@ export async function getAttendeeBadge(app: FastifyInstance) {
 
       return reply.status(200).send({
         badge: {
+          id: String(attendee.id),
           name: attendee.name,
           email: attendee.email,
           eventTitle: attendee.event.title,
